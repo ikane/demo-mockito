@@ -10,6 +10,8 @@ package org.ikane.demo.mockito;
 public class LoginService {
 	
 	private IAccountRepository accountRepository;
+	
+	private int failedAttemps = 0;
 
 	public LoginService(IAccountRepository accountRepository) {
 		this.accountRepository = accountRepository;	
@@ -18,6 +20,12 @@ public class LoginService {
 	public void login(String accountId, String password) {
 		IAccount account = this.accountRepository.find(accountId);
 		account.setLoggedIn(true);
+		if(account.passwordMatches(password) == false) {
+			failedAttemps++;
+		}
+		if(failedAttemps==3) {
+			account.setRevoked(true);
+		}
 	}
 
 	public IAccountRepository getAccountRepository() {
