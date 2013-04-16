@@ -13,4 +13,6 @@ public interface IAccount {
 
 	void setLoggedIn(boolean b);
 
+	void setRevoked(boolean b);
+
 }
