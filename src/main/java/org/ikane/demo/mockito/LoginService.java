@@ -12,6 +12,7 @@ public class LoginService {
 	private IAccountRepository accountRepository;
 	
 	private int failedAttemps = 0;
+	private String previousAccount="";
 
 	public LoginService(IAccountRepository accountRepository) {
 		this.accountRepository = accountRepository;	
@@ -19,9 +20,25 @@ public class LoginService {
 
 	public void login(String accountId, String password) {
 		IAccount account = this.accountRepository.find(accountId);
-		account.setLoggedIn(true);
-		if(account.passwordMatches(password) == false) {
-			failedAttemps++;
+		
+		if(account==null) {
+			throw new AccountNotFoundException();
+		} 
+		
+		if(account.passwordMatches(password) == true) {
+			if(account.isLoggedIn()) {
+				throw new AccountLoginLimitReachedException();
+			} else if(account.isRevoked()) {
+				throw new AccountRevokedException();
+			}
+			account.setLoggedIn(true);
+		} else {
+			if(this.previousAccount.equals(accountId)) {
+				failedAttemps++;
+			} else {
+				failedAttemps = 1;
+				this.previousAccount = accountId;
+			}
 		}
 		if(failedAttemps==3) {
 			account.setRevoked(true);
