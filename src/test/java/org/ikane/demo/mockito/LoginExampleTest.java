@@ -28,6 +28,7 @@ public class LoginExampleTest {
 		account = mock(IAccount.class);
 		accountRepository = mock(IAccountRepository.class);
 		when(accountRepository.find(anyString())).thenReturn(account);
+		when(account.getId()).thenReturn("brett");
 		loginService = new LoginService(accountRepository);
 	}
 	

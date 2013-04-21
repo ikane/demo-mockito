@@ -18,4 +18,7 @@ public interface IAccount {
 	boolean isLoggedIn();
 
 	boolean isRevoked();
+	
+	String getId();
+
 }
