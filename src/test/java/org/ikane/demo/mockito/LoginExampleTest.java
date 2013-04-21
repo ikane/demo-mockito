@@ -114,4 +114,16 @@ public class LoginExampleTest {
 		when(this.account.isRevoked()).thenReturn(true);
 		loginService.login("ikane", "password");
 	}
+	
+	@Test
+	public void itShouldResetBackToInitialStateAfterSuccessfulLogin() {
+		willPasswordMatch(false);
+		loginService.login("brett", "password");
+		loginService.login("brett", "password");
+		willPasswordMatch(true);
+		loginService.login("brett", "password");
+		willPasswordMatch(false);
+		loginService.login("brett", "password");
+		verify(account, never()).setRevoked(true);
+	}
 }
