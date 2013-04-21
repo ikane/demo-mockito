@@ -1,7 +1,9 @@
 /**
  * 
  */
-package org.ikane.demo.mockito;
+package org.ikane.demo.mockito.dao;
+
+import org.ikane.demo.mockito.domain.IAccount;
 
 /**
  * @author IKANE

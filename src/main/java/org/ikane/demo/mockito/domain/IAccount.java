@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.ikane.demo.mockito;
+package org.ikane.demo.mockito.domain;
 
 /**
  * @author IKANE

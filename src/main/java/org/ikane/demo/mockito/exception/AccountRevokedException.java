@@ -1,13 +1,13 @@
 /**
  * 
  */
-package org.ikane.demo.mockito;
+package org.ikane.demo.mockito.exception;
 
 /**
  * @author ikane
  *
  */
-public class AccountNotFoundException extends RuntimeException {
+public class AccountRevokedException extends RuntimeException {
 
 	/**
 	 * 
@@ -17,14 +17,14 @@ public class AccountNotFoundException extends RuntimeException {
 	/**
 	 * 
 	 */
-	public AccountNotFoundException() {
+	public AccountRevokedException() {
 		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * @param message
 	 */
-	public AccountNotFoundException(String message) {
+	public AccountRevokedException(String message) {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
@@ -32,7 +32,7 @@ public class AccountNotFoundException extends RuntimeException {
 	/**
 	 * @param cause
 	 */
-	public AccountNotFoundException(Throwable cause) {
+	public AccountRevokedException(Throwable cause) {
 		super(cause);
 		// TODO Auto-generated constructor stub
 	}
@@ -41,7 +41,7 @@ public class AccountNotFoundException extends RuntimeException {
 	 * @param message
 	 * @param cause
 	 */
-	public AccountNotFoundException(String message, Throwable cause) {
+	public AccountRevokedException(String message, Throwable cause) {
 		super(message, cause);
 		// TODO Auto-generated constructor stub
 	}
